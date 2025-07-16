@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { collection, query, where, getDocs, orderBy, addDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../services/firebase';
 import { generateGeminiInsights } from './geminiApi';
 
 function parseGeminiResponse(text) {

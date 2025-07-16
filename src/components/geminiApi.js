@@ -1,5 +1,10 @@
+const API_BASE_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://web-intern.onrender.com'
+    : '';
+
 export async function generateGeminiInsights(prompt) {
-  const response = await fetch('/api/gemini/insights', {
+  const response = await fetch(`${API_BASE_URL}/api/gemini/insights`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
