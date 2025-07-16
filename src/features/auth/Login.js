@@ -85,15 +85,33 @@ function Login() {
     return (
       <Box sx={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #e3f2fd 0%, #90caf9 100%)',
+        background: 'linear-gradient(135deg, #f8fafc 0%, #a18cd1 100%)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}>
         <Container maxWidth="sm">
-          <Card sx={{ p: 4, boxShadow: 6, borderRadius: 3 }}>
+          <Card sx={{ p: 4, boxShadow: 10, borderRadius: 4, border: '2px solid #7b1fa2', position: 'relative' }}>
+            {/* Header Banner */}
+            <Box sx={{
+              width: '100%',
+              background: 'linear-gradient(90deg, #7b1fa2 0%, #512da8 100%)',
+              color: 'white',
+              borderRadius: 2,
+              py: 2,
+              mb: 3,
+              textAlign: 'center',
+              boxShadow: 2,
+            }}>
+              <Typography variant="h5" fontWeight={700} letterSpacing={2}>
+                Welcome to Web Intern Monitor
+              </Typography>
+              <Typography variant="body2" sx={{ opacity: 0.85 }}>
+                Please sign in to continue
+              </Typography>
+            </Box>
             <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Avatar sx={{ m: 1, bgcolor: 'primary.main', width: 56, height: 56 }}>
+              <Avatar sx={{ m: 1, bgcolor: 'secondary.main', width: 64, height: 64, boxShadow: 3 }}>
                 <LockOutlinedIcon fontSize="large" />
               </Avatar>
               <Typography variant="h4" component="h1" gutterBottom fontWeight={700}>
@@ -125,10 +143,10 @@ function Login() {
                 <Button
                   type="submit"
                   variant="contained"
-                  color="primary"
+                  color="secondary"
                   fullWidth
                   size="large"
-                  sx={{ mt: 2, mb: 1, borderRadius: 2 }}
+                  sx={{ mt: 2, mb: 1, borderRadius: 2, fontWeight: 700, letterSpacing: 1 }}
                   disabled={loading}
                 >
                   {loading ? 'Signing in...' : 'Sign In'}
@@ -136,19 +154,33 @@ function Login() {
               </Box>
               <Button
                 variant="outlined"
-                color="primary"
+                color="secondary"
                 fullWidth
                 startIcon={<GoogleIcon />}
-                sx={{ mt: 2, borderRadius: 2, textTransform: 'none', fontWeight: 600 }}
+                sx={{ mt: 2, borderRadius: 2, textTransform: 'none', fontWeight: 600, borderWidth: 2 }}
                 onClick={handleGoogleLogin}
                 disabled={loading}
               >
                 Sign in with Google
               </Button>
               <Typography variant="body2" sx={{ mt: 2 }}>
-                Don&apos;t have an account? <a href="/signup" style={{ color: '#1976d2', textDecoration: 'none', fontWeight: 500 }}>Sign up</a>
+                Don&apos;t have an account? <a href="/signup" style={{ color: '#7b1fa2', textDecoration: 'none', fontWeight: 500 }}>Sign up</a>
               </Typography>
             </CardContent>
+            {/* Footer */}
+            <Box sx={{
+              position: 'absolute',
+              bottom: 8,
+              left: 0,
+              width: '100%',
+              textAlign: 'center',
+              color: '#7b1fa2',
+              fontWeight: 600,
+              fontSize: 14,
+              opacity: 0.8
+            }}>
+              Design Updated July 2025
+            </Box>
           </Card>
         </Container>
       </Box>
