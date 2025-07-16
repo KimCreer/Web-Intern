@@ -85,17 +85,17 @@ function Login() {
     return (
       <Box sx={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #f8fafc 0%, #a18cd1 100%)',
+        background: 'linear-gradient(135deg, #0a2342 0%, #274472 100%)', // navy blue gradient
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
       }}>
         <Container maxWidth="sm">
-          <Card sx={{ p: 4, boxShadow: 10, borderRadius: 4, border: '2px solid #7b1fa2', position: 'relative' }}>
+          <Card sx={{ p: 4, boxShadow: 10, borderRadius: 4, border: '2px solid #274472', position: 'relative', background: '#f4f8fb' }}>
             {/* Header Banner */}
             <Box sx={{
               width: '100%',
-              background: 'linear-gradient(90deg, #7b1fa2 0%, #512da8 100%)',
+              background: 'linear-gradient(90deg, #274472 0%, #0a2342 100%)',
               color: 'white',
               borderRadius: 2,
               py: 2,
@@ -111,10 +111,10 @@ function Login() {
               </Typography>
             </Box>
             <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Avatar sx={{ m: 1, bgcolor: 'secondary.main', width: 64, height: 64, boxShadow: 3 }}>
+              <Avatar sx={{ m: 1, bgcolor: '#274472', width: 64, height: 64, boxShadow: 3 }}>
                 <LockOutlinedIcon fontSize="large" />
               </Avatar>
-              <Typography variant="h4" component="h1" gutterBottom fontWeight={700}>
+              <Typography variant="h4" component="h1" gutterBottom fontWeight={700} color="#0a2342">
                 Sign In
               </Typography>
               <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2, width: '100%' }}>
@@ -127,6 +127,7 @@ function Login() {
                   margin="normal"
                   required
                   autoFocus
+                  InputProps={{ style: { background: '#fff' } }}
                 />
                 <TextField
                   label="Password"
@@ -136,6 +137,7 @@ function Login() {
                   fullWidth
                   margin="normal"
                   required
+                  InputProps={{ style: { background: '#fff' } }}
                 />
                 {error && (
                   <Alert severity="error" sx={{ mt: 2, mb: 1 }}>{error}</Alert>
@@ -143,10 +145,9 @@ function Login() {
                 <Button
                   type="submit"
                   variant="contained"
-                  color="secondary"
                   fullWidth
                   size="large"
-                  sx={{ mt: 2, mb: 1, borderRadius: 2, fontWeight: 700, letterSpacing: 1 }}
+                  sx={{ mt: 2, mb: 1, borderRadius: 2, fontWeight: 700, letterSpacing: 1, background: '#274472', color: '#fff', '&:hover': { background: '#0a2342' } }}
                   disabled={loading}
                 >
                   {loading ? 'Signing in...' : 'Sign In'}
@@ -154,17 +155,16 @@ function Login() {
               </Box>
               <Button
                 variant="outlined"
-                color="secondary"
                 fullWidth
                 startIcon={<GoogleIcon />}
-                sx={{ mt: 2, borderRadius: 2, textTransform: 'none', fontWeight: 600, borderWidth: 2 }}
+                sx={{ mt: 2, borderRadius: 2, textTransform: 'none', fontWeight: 600, borderWidth: 2, borderColor: '#274472', color: '#274472', background: '#fff', '&:hover': { background: '#e3eaf6', borderColor: '#0a2342', color: '#0a2342' } }}
                 onClick={handleGoogleLogin}
                 disabled={loading}
               >
                 Sign in with Google
               </Button>
               <Typography variant="body2" sx={{ mt: 2 }}>
-                Don&apos;t have an account? <a href="/signup" style={{ color: '#7b1fa2', textDecoration: 'none', fontWeight: 500 }}>Sign up</a>
+                Don&apos;t have an account? <a href="/signup" style={{ color: '#274472', textDecoration: 'none', fontWeight: 500 }}>Sign up</a>
               </Typography>
             </CardContent>
             {/* Footer */}
@@ -174,12 +174,11 @@ function Login() {
               left: 0,
               width: '100%',
               textAlign: 'center',
-              color: '#7b1fa2',
+              color: '#274472',
               fontWeight: 600,
               fontSize: 14,
               opacity: 0.8
             }}>
-              Design Updated July 2025
             </Box>
           </Card>
         </Container>
