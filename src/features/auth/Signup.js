@@ -163,7 +163,6 @@ function Signup() {
               fontSize: 14,
               opacity: 0.8
             }}>
-              Design Updated July 2025
             </Box>
           </Card>
         </Container>
