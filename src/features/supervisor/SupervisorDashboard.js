@@ -16,8 +16,11 @@ import {
   ListItemText,
   TextField,
   Button,
-  Alert
+  Alert,
+  Avatar
 } from '@mui/material';
+
+const PLMUN_LOGO = 'https://s.yimg.com/zb/imgv1/b78a2d83-7709-3a13-a971-0109aa12560b/t_500x300';
 
 function SupervisorDashboard() {
   const [interns, setInterns] = useState([]);
@@ -87,19 +90,30 @@ function SupervisorDashboard() {
 
   return (
     <Box sx={{ mt: 2 }}>
-      <Typography variant="h5" fontWeight={700} gutterBottom>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+        <Avatar src={PLMUN_LOGO} alt="PLMun Logo" sx={{ width: 48, height: 48, bgcolor: '#fff', border: '2px solid #f4f8fb' }} />
+        <Box>
+          <Typography variant="h6" fontWeight={700} letterSpacing={1} color="#0a2342" sx={{ lineHeight: 1 }}>
+            Pamantasan ng Lungsod ng Muntinlupa
+          </Typography>
+          <Typography variant="subtitle2" color="#274472" fontWeight={600} sx={{ fontSize: 15, letterSpacing: 1 }}>
+            College of Information Technology Studies (CITS)
+          </Typography>
+        </Box>
+      </Box>
+      <Typography variant="h5" fontWeight={700} gutterBottom color="#0a2342">
         Interns Progress Overview
       </Typography>
-      <Divider sx={{ mb: 3 }} />
+      <Divider sx={{ mb: 3, background: '#274472' }} />
       <Grid container spacing={4}>
         {/* Interns List */}
         <Grid item xs={12} md={4}>
-          <Card sx={{ boxShadow: 2 }}>
+          <Card sx={{ boxShadow: 2, background: '#f4f8fb', borderRadius: 3 }}>
             <CardContent>
-              <Typography variant="h6" fontWeight={600} gutterBottom>
+              <Typography variant="h6" fontWeight={600} gutterBottom color="#0a2342">
                 Interns
               </Typography>
-              <Divider sx={{ mb: 2 }} />
+              <Divider sx={{ mb: 2, background: '#274472' }} />
               {loading ? (
                 <Typography>Loading interns...</Typography>
               ) : interns.length === 0 ? (
@@ -111,7 +125,7 @@ function SupervisorDashboard() {
                       <ListItemButton
                         selected={selectedIntern?.id === intern.id}
                         onClick={() => setSelectedIntern(intern)}
-                        sx={{ borderRadius: 2 }}
+                        sx={{ borderRadius: 2, '&.Mui-selected': { background: '#e3eaf6' } }}
                       >
                         <ListItemText
                           primary={intern.email}
@@ -134,22 +148,22 @@ function SupervisorDashboard() {
         <Grid item xs={12} md={8}>
           {selectedIntern ? (
             <>
-              <Card sx={{ mb: 3, boxShadow: 2 }}>
+              <Card sx={{ mb: 3, boxShadow: 2, background: '#fff', borderRadius: 3 }}>
                 <CardContent>
-                  <Typography variant="h6" fontWeight={600} gutterBottom>
+                  <Typography variant="h6" fontWeight={600} gutterBottom color="#0a2342">
                     {selectedIntern.email}'s Progress
                   </Typography>
-                  <Divider sx={{ mb: 2 }} />
+                  <Divider sx={{ mb: 2, background: '#274472' }} />
                   <AIInsights userId={selectedIntern.id} role="intern" />
-                  <Typography variant="subtitle1" fontWeight={500} sx={{ mt: 3 }}>
+                  <Typography variant="subtitle1" fontWeight={500} sx={{ mt: 3 }} color="#0a2342">
                     Progress Logs
                   </Typography>
-                  <Divider sx={{ mb: 2 }} />
+                  <Divider sx={{ mb: 2, background: '#274472' }} />
                   {selectedIntern.logs.length === 0 ? (
                     <Typography>No progress logs found for this intern.</Typography>
                   ) : (
                     selectedIntern.logs.map(log => (
-                      <Card key={log.id} sx={{ mb: 2, background: '#f9f9f9', borderLeft: '4px solid #1976d2' }}>
+                      <Card key={log.id} sx={{ mb: 2, background: '#f9f9f9', borderLeft: '4px solid #274472', borderRadius: 2 }}>
                         <CardContent>
                           <Typography variant="subtitle2" color="text.secondary">
                             Date: {log.createdAt.toLocaleDateString()}
@@ -167,7 +181,7 @@ function SupervisorDashboard() {
                           </Typography>
                           {/* Feedback Section */}
                           <Box sx={{ mt: 2, borderTop: '1px solid #eee', pt: 2 }}>
-                            <Typography variant="subtitle2" fontWeight={600} gutterBottom>
+                            <Typography variant="subtitle2" fontWeight={600} gutterBottom color="#0a2342">
                               Add Feedback
                             </Typography>
                             <TextField
@@ -177,7 +191,7 @@ function SupervisorDashboard() {
                               fullWidth
                               multiline
                               rows={2}
-                              sx={{ mb: 1 }}
+                              sx={{ mb: 1, background: '#fff' }}
                             />
                             {feedbackError && <Alert severity="error" sx={{ mb: 1 }}>{feedbackError}</Alert>}
                             {feedbackSuccess && <Alert severity="success" sx={{ mb: 1 }}>{feedbackSuccess}</Alert>}
@@ -186,7 +200,7 @@ function SupervisorDashboard() {
                               disabled={!feedback.trim()}
                               variant="contained"
                               color="primary"
-                              sx={{ borderRadius: 2 }}
+                              sx={{ borderRadius: 2, background: '#274472', color: '#fff', fontWeight: 700, '&:hover': { background: '#0a2342' } }}
                             >
                               Submit Feedback
                             </Button>
@@ -199,7 +213,7 @@ function SupervisorDashboard() {
               </Card>
             </>
           ) : (
-            <Card sx={{ boxShadow: 2 }}>
+            <Card sx={{ boxShadow: 2, background: '#f4f8fb', borderRadius: 3 }}>
               <CardContent>
                 <Typography>Select an intern to view their progress logs and provide feedback.</Typography>
               </CardContent>
